@@ -3,7 +3,7 @@
 プロジェクトフォルダへの移動用
 (人によって違うかも)
 
-cd \Users\axisv\Documents\GitHub\Archer-ReactNative（井上）
+cd \Users\axisv\Documents\GitHub\archer-react-native（井上）
 
 
 
