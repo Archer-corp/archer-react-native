@@ -24,17 +24,9 @@ class MyPageScreen extends React.Component {
                },}
   }
 
-  componentWillMount() {
-      firebase.initializeApp({
-        apiKey: "AIzaSyBTpZFQpi2F3bUCWTg-eBM3sSsp_q_ACZY",
-        authDomain: "user-5ee06.firebaseapp.com",
-        databaseURL: "https://user-5ee06.firebaseio.com",
-        projectId: "user-5ee06",
-        storageBucket: "user-5ee06.appspot.com",
-        messagingSenderId: "135933983009"
-      });
-
-      firebase.auth().onAuthStateChanged((user) => {
+    componentWillMount() {
+        console.log('MyPageScreen:componentWillMount');
+        firebase.auth().onAuthStateChanged((user) => {
           if (user) {
               this.setState({ loggedIn: true });
               /*user.updateProfile({
@@ -52,7 +44,6 @@ class MyPageScreen extends React.Component {
           }
       })
       //const user = firebase.auth().currentUser;
-      console.log('a');
   }
 
   displayForm(){

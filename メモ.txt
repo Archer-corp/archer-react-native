@@ -1,38 +1,22 @@
-
-
-プロジェクトフォルダへの移動用
-(人によって違うかも)
-
+プロジェクトフォルダへの移動用(人によって違う)
 cd \Users\axisv\Documents\GitHub\archer-react-native（井上）
 
-
-
-
 デバッグ開始
- 
-
 npm start
-
-
 
 ライブラリは、ファイルを取り込んだ後、
 npm installで自動ですべて入る
-
-
 
 環境構築メモ
 
 Create-react-native-app
 (npm install -g create-react-native-app)
 
-
 Nativebase
 (npm install native-base --save)
 
-
 Firebase
 (npm install firebase --save)
-
 
 React-navigation
 (npm install --save react-navigation)

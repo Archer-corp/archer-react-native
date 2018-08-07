@@ -1,5 +1,5 @@
 import React from 'react';
-//import firebase from 'firebase';
+import firebase from 'firebase';
 import { Button, StyleSheet, Text, View } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator, BottomTabBar, StackNavigator ,TabNavigator,createStackNavigator,createMaterialTopTabNavigator} from 'react-navigation';
@@ -121,16 +121,18 @@ const RootBottomTabNavigator = createBottomTabNavigator (
 
 class App extends React.Component {
 
-  /*componentWillMount() {
+  componentWillMount() {
+
       firebase.initializeApp({
-        apiKey: "AIzaSyBTpZFQpi2F3bUCWTg-eBM3sSsp_q_ACZY",
-        authDomain: "user-5ee06.firebaseapp.com",
-        databaseURL: "https://user-5ee06.firebaseio.com",
-        projectId: "user-5ee06",
-        storageBucket: "user-5ee06.appspot.com",
-        messagingSenderId: "135933983009"
+          apiKey: "AIzaSyBTpZFQpi2F3bUCWTg-eBM3sSsp_q_ACZY",
+          authDomain: "user-5ee06.firebaseapp.com",
+          databaseURL: "https://user-5ee06.firebaseio.com",
+          projectId: "user-5ee06",
+          storageBucket: "user-5ee06.appspot.com",
+          messagingSenderId: "135933983009"
       });
 
+      /*
       firebase.auth().onAuthStateChanged((user) => {
           if (user) {
               this.setState({ loggedIn: true });
@@ -140,8 +142,8 @@ class App extends React.Component {
               console.log("not logged in");
           }
       })
-      //console.log(firebase.auth().currentUser);
-  }*/
+      //console.log(firebase.auth().currentUser);*/
+  }
 
     render() {
         //console.log('renderApp')
