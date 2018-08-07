@@ -1,6 +1,8 @@
 ﻿import React from 'react';
 import firebase from 'firebase';
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Footer } from 'native-base';
+import AppBar from './AppBar';
 
 const styles = StyleSheet.create({
     container: {
@@ -18,6 +20,8 @@ class RankingScreen extends React.Component {
         routeName = this.props.navigation.state.routeName;
         //console.log(this.props.navigation.state);
         return (
+            <Container>
+
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 {/*ランキング集計期間による場合分け*/}
                 {routeName === 'Rise' && <Text>急上昇</Text>}
@@ -25,7 +29,8 @@ class RankingScreen extends React.Component {
                 {routeName === 'Week' && <Text>ウィークリー</Text>}
                 {routeName === 'Total' && <Text>トータル</Text>}
                 <Text>ランキングページ</Text>
-            </View>
+                </View>
+                </Container>
         );
     }
 }

@@ -1,8 +1,10 @@
 ﻿import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import firebase from 'firebase';
-import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator,createStackNavigator} from 'react-navigation';
+import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator } from 'react-navigation';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Footer } from 'native-base';
 import LoginScreen from './LoginScreen';
+import AppBar from './AppBar';
 
 const styles = StyleSheet.create({
     container: {
@@ -14,9 +16,14 @@ const styles = StyleSheet.create({
 });
 
 class HomeScreen extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (
+            <Container>
+   
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>ホーム</Text>
                 <Button
@@ -24,7 +31,8 @@ class HomeScreen extends React.Component {
                     onPress={() => this.props.navigation.navigate('MyPage')}
                 />
 
-            </View>
+                </View>
+                </Container>
             
         );
     }

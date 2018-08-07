@@ -1,13 +1,15 @@
 import React from 'react';
 import firebase from 'firebase';
-import { Button, StyleSheet, Text, View } from 'react-native'
+import {StyleSheet, Text, View } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { createBottomTabNavigator, BottomTabBar, StackNavigator ,TabNavigator,createStackNavigator,createMaterialTopTabNavigator} from 'react-navigation';
+import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator, createMaterialTopTabNavigator,createSwitchNavigator } from 'react-navigation';
+import { Container, Header, Left, Body, Right, Button, Icon, Title,Footer } from 'native-base';
 import HomeScreen from './HomeScreen';
 import MyPageScreen, { flagupdate } from './MyPageScreen';
 import LoginScreen from './LoginScreen';
 import SignupScreen from './SignupScreen';
 import RankingScreen from './RankingScreen';
+import AppBar from './AppBar';
 
 
 /*export var CheckFirebaseAuth = () => {
@@ -41,6 +43,9 @@ const styles = StyleSheet.create({
 });
 
 const check = () => {console.log('renderApp')}
+
+//----------------Navigationの構造------------------
+
 
 const AccountTabNavigator = createMaterialTopTabNavigator(
     {
@@ -121,10 +126,22 @@ const RootBottomTabNavigator = createBottomTabNavigator (
 );
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+        };
 
-  componentWillMount() {
+    }
 
-      firebase.initializeApp({
+    async componentWillMount() {
+        await Expo.Font.loadAsync({
+            'Roboto': require('native-base/Fonts/Roboto.ttf'),
+            'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+        });
+        this.setState({ loading: false });
+
+      await firebase.initializeApp({
           apiKey: "AIzaSyBTpZFQpi2F3bUCWTg-eBM3sSsp_q_ACZY",
           authDomain: "user-5ee06.firebaseapp.com",
           databaseURL: "https://user-5ee06.firebaseio.com",
@@ -135,8 +152,20 @@ class App extends React.Component {
   }
 
     render() {
+       
+        if (this.state.loading) {
+            return <Expo.AppLoading />;
+        }
+
         check();
-        return <RootBottomTabNavigator/>;
+        return (
+            <Container>
+                <Header>
+                    <AppBar />
+                </Header>
+                    <RootBottomTabNavigator />
+                </Container>
+        );
     }
 }
 
