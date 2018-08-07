@@ -67,6 +67,7 @@ const MyPageStuckNavigator = createStackNavigator(
             screen: AccountTabNavigator,
         }
     },
+
     /*{
       initialRouteName: 'MyPage',
       initialRouteParams: { //Launch 初始化参数
@@ -131,22 +132,9 @@ class App extends React.Component {
           storageBucket: "user-5ee06.appspot.com",
           messagingSenderId: "135933983009"
       });
-
-      /*
-      firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-              this.setState({ loggedIn: true });
-              console.log("logged in");
-          } else {
-              this.setState({ loggedIn: false });
-              console.log("not logged in");
-          }
-      })
-      //console.log(firebase.auth().currentUser);*/
   }
 
     render() {
-        //console.log('renderApp')
         check();
         return <RootBottomTabNavigator/>;
     }
