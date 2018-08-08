@@ -15,7 +15,12 @@ export class AppBar extends React.Component {
  
 
     render() {
-        if (this.state.navigation == null) return(<View/>);
+        if (this.props.navigation != null) {
+            //console.log(this.props.navigation.state);
+        }
+
+
+
         return (
             <Container>
                 <Header>
@@ -25,7 +30,7 @@ export class AppBar extends React.Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Title>{this.state.navigation.state}</Title>
+                        {this.navigation!=null && <Title>{this.props.navigation.state.routeName}</Title>}
                     </Body>
                     <Right>
                         <Button transparent>

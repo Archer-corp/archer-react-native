@@ -87,7 +87,6 @@ const RootBottomTabNavigator = createBottomTabNavigator (
                 } else if (routeName === 'Ranking') {
                     iconName = `ios-star${focused ? '' : '-outline'}`;
                 }
-                archer_navigation = navigation;
                 // You can return any component that you like here! We usually use an
                 // icon component from react-native-vector-icons
                 return <Ionicons name={iconName} size={25} color={tintColor} />;
@@ -135,8 +134,9 @@ class App extends React.Component {
         check();
         return (
             <Container>
+                <Text>{"\n"}</Text>
                     <RootBottomTabNavigator />
-                </Container>
+            </Container>
         );
     }
 }

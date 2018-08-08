@@ -1,9 +1,10 @@
 import React from 'react';
 import firebase from 'firebase';
 import LoginScreen from './LoginScreen';
-import { Button, StyleSheet, Text, View } from 'react-native'
+import {    StyleSheet, Text, View, Button} from 'react-native'
+import { Container, Header, Left, Body, Right, Icon, Title, Footer } from 'native-base';
 import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator } from 'react-navigation';
-//import { CheckFirebaseAuth } from './App'
+import AppBar from './AppBar';
 
 const styles = StyleSheet.create({
     container: {
@@ -75,16 +76,19 @@ class MyPageScreen extends React.Component {
   }
   render() {
     console.log('renderMyPage');
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>{this.state.userData.name}のページ</Text>
-        <Button
-          title="ホームへ"
-          onPress={() => this.props.navigation.navigate('Home')}
-        />
-        <Text>{"\n"}</Text>
-        {this.displayForm()}
-      </View>
+      return (
+          <Container>
+             <AppBar navigation={this.props.navigation} />
+             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>{this.state.userData.name}のページ</Text>
+                <Button
+                    title="ホームへ"
+                    onPress={() => this.props.navigation.navigate('Home')}
+                />
+            <Text>{"\n"}</Text>
+            {this.displayForm()}
+            </View>
+          </Container>
     );
   }
 }

@@ -23,7 +23,8 @@ class HomeScreen extends React.Component {
     render() {
         return (
             <Container>
-   
+                <AppBar navigation={this.props.navigation}/>
+
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>ホーム</Text>
                 <Button
