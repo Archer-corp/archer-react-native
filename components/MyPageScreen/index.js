@@ -11,18 +11,5 @@ const MyPageStuckNavigator = createStackNavigator(
             screen: AccountTabNavigator,
         }
     },
-
-    /*{
-      initialRouteName: 'MyPage',
-      initialRouteParams: { //Launch 初始化参数
-          str: ()=>{'hello'},
-          checkauth: (flag)? true : false
-      },
-    },
-    {
-      transitionConfig: ()=> {
-        return {transitionProps;
-      }
-    }*/
 );
 export default MyPageStuckNavigator;

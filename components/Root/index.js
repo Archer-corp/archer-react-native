@@ -6,21 +6,26 @@ import HomeScreen from '../HomeScreen/HomeScreen'
 import RankingScreen from '../RankingScreen/RankingScreen'
 import MyPageScreen from '../MyPageScreen/MyPageScreen'
 import RootBottomTabNavigator from '../HomeScreen/index'
+import AccountNavigation from '../MyPageScreen/AccountNavigation'
 
-const AppDrawer = createDrawerNavigator(
+const RootDrawer = createDrawerNavigator(
   {
     Root: {screen:RootBottomTabNavigator},
     Home: {screen: HomeScreen},
     Ranking: {screen: RankingScreen},
-    MyPage: {screen: MyPageScreen}
+    MyPage: {screen: MyPageScreen},
   },
   {
-  contentComponent: props => <SideBar {...props} />
+    contentComponent: props => <SideBar {...props} />
   }
 );
 
-//const routes = ["Home", "Chat", "Profile"];
 const routes = ['Home','Ranking','MyPage'];
+/*const DrawerProfile = () => {
+  return(
+
+  );
+}*/
 class SideBar extends React.Component {
   constructor(props){
     super(props);
@@ -39,15 +44,15 @@ class SideBar extends React.Component {
               return (
                 <ListItem
                   button
-                  onPress={() => navigation.navigate(data)}>
+                  onPress={() => this.props.navigation.navigate(data)}
+                >
                   <Text>{data}</Text>
                 </ListItem>
-              );
-            }}
+              );}}
           />
         </Content>
       </Container>
     );
   }
 }
-export default AppDrawer;
+export default RootDrawer;

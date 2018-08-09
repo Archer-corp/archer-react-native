@@ -2,7 +2,8 @@ import React from 'react';
 import firebase from 'firebase';
 import LoginScreen from './LoginScreen';
 import { Button, StyleSheet, Text, View, Alert } from 'react-native'
-//import {} from 'react-navigation';
+import {Container, Content, Body} from 'native-base'
+import AppBar from '../Root/AppBar'
 
 
 const styles = StyleSheet.create({
@@ -54,15 +55,24 @@ class MyPageScreen extends React.Component {
   render() {
     console.log('renderMyPage');
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>{this.props.screenProps.userData.name}のページ</Text>
-        <Button
-          title="ホームへ"
-          onPress={() => this.props.navigation.navigate('Home')}
+      <Container>
+        <AppBar
+          navigation={this.props.navigation}
+          title='MyPage'
         />
-        <Text>{"\n"}</Text>
-        {this.displayForm()}
-      </View>
+        <Body>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>{this.props.screenProps.userData.name}のページ</Text>
+            <Button
+              title="ホームへ"
+              onPress={() => this.props.navigation.navigate('Home')}
+            />
+            <Text>{"\n"}</Text>
+            {this.displayForm()}
+          </View>
+        </Body>
+      </Container>
+
     );
   }
 }
