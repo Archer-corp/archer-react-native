@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import firebase from 'firebase';
 import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator } from 'react-navigation';
 import { Container, Header, Left, Button, Icon, Body, Right, Title} from 'native-base'
+import SearchScreen from '../SearchScreen/SearchScreen'
 //import AppBar from './AppBar';
 //import AppDrawer from './App'
 
@@ -21,7 +22,13 @@ class HomeScreen extends React.Component {
       this.state = {
           title: 'please set title',
       };
-  }
+    }
+
+    onHandleSearchButton() {
+        this.props.navigation.navigate('Search', { screen: SearchScreen });
+        console.log("Navigate to Search");
+    }
+
     render() {
         return (
           <Container>
@@ -33,12 +40,15 @@ class HomeScreen extends React.Component {
                 >
                   <Icon name='menu' />
                 </Button>
-              </Left>
+              </Left>   
               <Body>
                 <Title>{this.state.title}</Title>
               </Body>
               <Right>
-                <Button transparent>
+                        <Button
+                            transparent
+                            onPress={() => this.onHandleSearchButton()}
+                        >
                   <Icon name='search' />
                 </Button>
               </Right>

@@ -6,12 +6,16 @@ import { Container, Content, Header, Left, Body, Right, Button, Icon, Title, Foo
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import RankingTabNavigator from '../RankingScreen/index'
 import MyPageStuckNavigator from '../MyPageScreen/index'
+import SearchScreen from '../SearchScreen/SearchScreen'
 import HomeScreen from './HomeScreen'
 
 const RootBottomTabNavigator = createBottomTabNavigator (
     {
         Home: {
             screen:HomeScreen,
+        },
+        Search: {
+            screen:SearchScreen,
         },
         Ranking: {
             screen:RankingTabNavigator,
@@ -32,6 +36,8 @@ const RootBottomTabNavigator = createBottomTabNavigator (
                     iconName = `ios-person${focused ? '' : '-outline'}`;
                 } else if (routeName === 'Ranking') {
                     iconName = `ios-star${focused ? '' : '-outline'}`;
+                } else if (routeName === 'Search') {
+                    iconName = `ios-search${focused ? '' : '-outline'}`;
                 }
 
                 // You can return any component that you like here! We usually use an
