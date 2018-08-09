@@ -43,7 +43,8 @@ const RootBottomTabNavigator = createBottomTabNavigator (
             activeTintColor: 'tomato',
             inactiveTintColor: 'gray',
         },
-    },
+    }
 );
+
 
 export default (RootBottomTabNavigator);

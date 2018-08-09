@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import firebase from 'firebase';
+import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator } from 'react-navigation';
 import { Container, Header, Left, Button, Icon, Body, Right, Title} from 'native-base'
-import AppBar from '../Root/AppBar';
+//import AppBar from './AppBar';
+//import AppDrawer from './App'
 
 const styles = StyleSheet.create({
     container: {
@@ -23,10 +25,24 @@ class HomeScreen extends React.Component {
     render() {
         return (
           <Container>
-            <AppBar
-              navigation={this.props.navigation}
-              title={this.state.title}
-            />
+            <Header>
+              <Left>
+                <Button
+                  transparent
+                  onPress={()=>this.props.navigation.openDrawer()}
+                >
+                  <Icon name='menu' />
+                </Button>
+              </Left>
+              <Body>
+                <Title>{this.state.title}</Title>
+              </Body>
+              <Right>
+                <Button transparent>
+                  <Icon name='search' />
+                </Button>
+              </Right>
+            </Header>
             <Body>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
               <Text>ホーム</Text>
