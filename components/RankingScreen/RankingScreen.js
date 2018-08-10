@@ -14,6 +14,10 @@ const styles = StyleSheet.create({
 
 
 class RankingScreen extends React.Component {
+  componentWillMount(){
+    //ページ名を取得
+    this.props.screenProps.getPage('Ranking')
+  }
 
     render() {
         routeName = this.props.navigation.state.routeName;
@@ -28,8 +32,8 @@ class RankingScreen extends React.Component {
                 {routeName === 'Week' && <Text>ウィークリー</Text>}
                 {routeName === 'Total' && <Text>トータル</Text>}
                 <Text>ランキングページ</Text>
-                </View>
-                </Container>
+            </View>
+            </Container>
         );
     }
 }

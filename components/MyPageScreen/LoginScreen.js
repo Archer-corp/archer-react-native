@@ -25,6 +25,7 @@ class LoginScreen extends React.Component {
 
   state={ email: '', password: '' }
 
+  //サインイン
   onClickedSignin(){
     console.log('Signin');
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)

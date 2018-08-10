@@ -4,7 +4,7 @@ import {StyleSheet, Text, View, Alert } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator, createMaterialTopTabNavigator,createSwitchNavigator,createDrawerNavigator, DrawerNavigator } from 'react-navigation';
 import { Container, Header, Left, Body, Right, Button, Icon, Title,Footer } from 'native-base';
-import AppDrawer from './components/Root/AppDrawer'
+import AppDrawer from './components/Root/index'
 
 const styles = StyleSheet.create({
   container: {
@@ -21,6 +21,8 @@ class App extends React.Component {
     this.state = {
       loading: true,
       loggedIn: null,
+      Page: null,
+      getPage: (value)=>this.setState({Page:value}),
       userData: {
         name: '',
         email: '',

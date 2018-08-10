@@ -1,5 +1,7 @@
 import React from 'react'
-import {createMaterialTopTabNavigator} from 'react-navigation'
+import {createMaterialTopTabNavigator, createStackNavigator} from 'react-navigation'
+import {Text} from 'react-native'
+import { Container, Header, Left, Button, Icon, Body, Right, Title} from 'native-base'
 import RankingScreen from './RankingScreen'
 
 const RankingTabNavigator = createMaterialTopTabNavigator(
@@ -10,4 +12,5 @@ const RankingTabNavigator = createMaterialTopTabNavigator(
         Total: { screen: RankingScreen ,},
     }
 );
+
 export default RankingTabNavigator;

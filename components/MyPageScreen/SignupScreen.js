@@ -21,6 +21,7 @@ class SignupScreen extends React.Component {
         confirmPassword: '',
     };
 
+    //サインアップ
     onClickedSignup = () => {
         console.log("SIGN UP!");
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)

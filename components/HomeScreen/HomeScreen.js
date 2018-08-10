@@ -4,8 +4,6 @@ import firebase from 'firebase';
 import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator } from 'react-navigation';
 import { Container, Header, Left, Button, Icon, Body, Right, Title} from 'native-base'
 import SearchScreen from '../SearchScreen/SearchScreen'
-//import AppBar from './AppBar';
-//import AppDrawer from './App'
 
 const styles = StyleSheet.create({
     container: {
@@ -18,54 +16,32 @@ const styles = StyleSheet.create({
 
 class HomeScreen extends React.Component {
   constructor(props) {
-      super(props);
-      this.state = {
-          title: 'please set title',
-      };
-    }
+    super(props);
+  }
 
-    onHandleSearchButton() {
-        this.props.navigation.navigate('Search', { screen: SearchScreen });
-        console.log("Navigate to Search");
-    }
+  componentWillMount(){
+    //ページ名を取得
+    this.props.screenProps.getPage('Home')
+  }
 
-    render() {
-        return (
-          <Container>
-            <Header>
-              <Left>
-                <Button
-                  transparent
-                  onPress={()=>this.props.navigation.openDrawer()}
-                >
-                  <Icon name='menu' />
-                </Button>
-              </Left>   
-              <Body>
-                <Title>{this.state.title}</Title>
-              </Body>
-              <Right>
-                        <Button
-                            transparent
-                            onPress={() => this.onHandleSearchButton()}
-                        >
-                  <Icon name='search' />
-                </Button>
-              </Right>
-            </Header>
-            <Body>
+  render() {
+    console.log(this.props.screenProps)
+      return (
+        <Container>
+          <StatusBar hidden={true} />
+          <Body>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              <Text>ホーム</Text>
-              <Button
-                onPress={()=>this.props.navigation.navigate('MyPage')}
-              >
-                <Text>マイページへ</Text>
-              </Button>
-            </View>
-            </Body>
-          </Container>
-        );
-    }
-}
+            <Text>ホーム</Text>
+            <Button
+              onPress={()=>this.props.navigation.navigate('MyPage')}
+            >
+              <Text>マイページへ</Text>
+            </Button>
+          </View>
+          </Body>
+        </Container>
+      );
+  }
 
+}
 export default (HomeScreen);

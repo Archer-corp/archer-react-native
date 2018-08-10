@@ -23,24 +23,25 @@ class SearchScreen extends React.Component {
         };
     }
 
+    componentWillMount(){
+      this.props.screenProps.getPage('search')
+    }
+
     render() {
         return (
             <Container>
                 <Header searchBar rounded>
-                    <Item>
-                        <Icon name="ios-search" />
-                        <Input placeholder="search" />
-                    </Item>
-                    <Button transparent>
-                        <Text>Search!</Text>
-                        </Button>
+                  <Item>
+                      <Icon name="ios-search" />
+                      <Input placeholder="search" />
+                  </Item>
                 </Header>
 
-                
+
                 <Body>
-                    
-  
-                       
+
+
+
                 </Body>
 
             </Container>

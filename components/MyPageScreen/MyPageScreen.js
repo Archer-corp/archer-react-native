@@ -1,7 +1,8 @@
 import React from 'react';
 import firebase from 'firebase';
 import LoginScreen from './LoginScreen';
-import { Button, StyleSheet, Text, View, Alert } from 'react-native'
+import { StyleSheet, Text, View, Alert } from 'react-native'
+import { Container, Header, Left, Button, Icon, Body, Right, Title} from 'native-base'
 //import {} from 'react-navigation';
 
 
@@ -19,29 +20,34 @@ class MyPageScreen extends React.Component {
     super(props);
   }
 
-    componentWillMount() {
-        console.log('MyPageScreen:componentWillMount');
-        //console.log(this.props)
+  componentWillMount(){
+    //ページ名を取得
+    this.props.screenProps.getPage('MyPage')
   }
 
+  //ログイン状態に応じてボタンの切り替え
   displayForm(){
     if (this.props.screenProps.loggedIn) {
       return (
         <Button
-          title= "LogOut"
           onPress={this.onClickedSignout.bind(this)}
-        />
+        >
+          <Text>LOGOUT</Text>
+        </Button>
       );
     } else {
       return (
         <Button
-          title= "Log in or Sign up"
           onPress={() => this.props.navigation.navigate('Login')}
-        />
+        >
+          <Text>Log in or Sign up</Text>
+        </Button>
       );
     }
   }
 
+
+  //サインアウト
   onClickedSignout(){
     console.log('Signout');
     firebase.auth().signOut().then(function() {
@@ -51,18 +57,24 @@ class MyPageScreen extends React.Component {
     });
     this.props.navigation.navigate('Home')
   }
+
   render() {
     console.log('renderMyPage');
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>{this.props.screenProps.userData.name}のページ</Text>
-        <Button
-          title="ホームへ"
-          onPress={() => this.props.navigation.navigate('Home')}
-        />
-        <Text>{"\n"}</Text>
-        {this.displayForm()}
-      </View>
+      <Container>
+        <Body>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>{this.props.screenProps.userData.name}のページ</Text>
+            <Button
+              onPress={() => this.props.navigation.navigate('Home')}
+            >
+              <Text>ホームへ</Text>
+            </Button>
+            <Text>{"\n"}</Text>
+            {this.displayForm()}
+          </View>
+        </Body>
+      </Container>
     );
   }
 }
