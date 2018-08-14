@@ -20,11 +20,6 @@ class MyPageScreen extends React.Component {
     super(props);
   }
 
-  componentWillMount(){
-    //ページ名を取得
-    this.props.screenProps.getPage('MyPage')
-  }
-
   //ログイン状態に応じてボタンの切り替え
   displayForm(){
     if (this.props.screenProps.loggedIn) {
@@ -45,7 +40,6 @@ class MyPageScreen extends React.Component {
       );
     }
   }
-
 
   //サインアウト
   onClickedSignout(){

@@ -3,8 +3,6 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import firebase from 'firebase';
 import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator } from 'react-navigation';
 import { Container, Header, Left, Button, Icon, Body, Right, Title ,Input,Form,Item,Content} from 'native-base'
-//import AppBar from './AppBar';
-//import AppDrawer from './App'
 
 const styles = StyleSheet.create({
     container: {
@@ -21,10 +19,6 @@ class SearchScreen extends React.Component {
         this.state = {
             title: '',
         };
-    }
-
-    componentWillMount(){
-      this.props.screenProps.getPage('search')
     }
 
     render() {

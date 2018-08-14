@@ -9,6 +9,7 @@ const MyPageStuckNavigator = createStackNavigator(
         MyPage: {
             screen: MyPageScreen,
             navigationOptions: ({navigation}) => ({
+              //ヘッダー描写
               header: (
                 <Header>
                   <Left>
@@ -36,7 +37,7 @@ const MyPageStuckNavigator = createStackNavigator(
         Login: {
             screen: AccountTabNavigator,
             navigationOptions: ({navigation}) => ({
-              //ヘッダーを表示させない
+              //ヘッダー描写(戻るボタン)
               header: (
                 <Header>
                   <Left>

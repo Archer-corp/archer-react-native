@@ -1,10 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import {StyleSheet, Text, View, Alert } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator, createMaterialTopTabNavigator,createSwitchNavigator,createDrawerNavigator, DrawerNavigator } from 'react-navigation';
-import { Container, Header, Left, Body, Right, Button, Icon, Title,Footer } from 'native-base';
-import RootBottomTabNavigator from './components/Root/index'
+import AppDrawer from './components/Root/Drawer'
 
 const styles = StyleSheet.create({
   container: {
@@ -19,25 +16,27 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      //NativeBaseに使ってるらしい
       loading: true,
+      //Firebaseのログイン状態のデータ
       loggedIn: null,
-      Page: null,
-      getPage: (value)=>this.setState({Page:value}),
+      //ログイン時のユーザーデータ保持
       userData: {
         name: '',
-        email: '',
-        uri: 'https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif'
+        photouri: 'https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif'
       }
     };
   }
 
   async componentWillMount() {
+    //NativeBaseの初期化処理
     await Expo.Font.loadAsync({
         'Roboto': require('native-base/Fonts/Roboto.ttf'),
         'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
     });
     this.setState({ loading: false });
 
+    //Firebaseの初期化処理
     await firebase.initializeApp({
       apiKey: "AIzaSyBTpZFQpi2F3bUCWTg-eBM3sSsp_q_ACZY",
       authDomain: "user-5ee06.firebaseapp.com",
@@ -46,23 +45,27 @@ class App extends React.Component {
       storageBucket: "user-5ee06.appspot.com",
       messagingSenderId: "135933983009"
     });
+
+    //Firebaseのログイン状態を確認しstate.userDataの更新
     await firebase.auth().onAuthStateChanged((user) => {
       if (user) {
           this.setState({ loggedIn: true });
-          /*user.updateProfile({
+          //コメントアウトされたコマンドでFirebase上のユーザーデータを更新できる
+          /*
+          user.updateProfile({
             displayName: 'Jack the Ripper',
             photoURL: 'https://karakuri.link/wp-content/uploads/2015/11/04.jpg'
           })*/
           let userData = Object.assign({}, this.state.userData);
           userData.name = user.displayName;
-          userData.uri = user.photoURL;
+          userData.photouri = user.photoURL;
           this.setState({userData});
           console.log("logged in");
       } else {
           this.setState({ loggedIn: false });
           let userData = Object.assign({}, this.state.userData);
           userData.name='';
-          userData.uri='https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif';
+          userData.photouri='https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif';
           this.setState({userData});
           console.log("not logged in");
           Alert.alert("No Users Found", "Oops, Looks like you are not signed in");
@@ -75,8 +78,9 @@ class App extends React.Component {
       return <Expo.AppLoading />;
     }
     console.log('renderApp')
+    //screenPropsでreact-navigtionのコンポーネントにAppコンポーネントのstateを渡す
     return (
-      <RootBottomTabNavigator
+      <AppDrawer
         screenProps = {this.state}
       />
     );

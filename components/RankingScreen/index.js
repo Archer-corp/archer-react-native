@@ -1,7 +1,6 @@
 import React from 'react'
 import {createMaterialTopTabNavigator, createStackNavigator} from 'react-navigation'
-import {Text} from 'react-native'
-import { Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
+import { Header, Left, Body, Right, Button, Icon, Title, Text } from 'native-base';
 import RankingScreen from './RankingScreen'
 
 const RankingTabNavigator = createMaterialTopTabNavigator(
@@ -13,6 +12,8 @@ const RankingTabNavigator = createMaterialTopTabNavigator(
     }
 );
 
+
+//上のTabNavigatorに飛ぶ
 const RankingStuckNavigator = createStackNavigator(
   {
     Ranking: {

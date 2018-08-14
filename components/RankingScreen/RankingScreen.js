@@ -12,13 +12,7 @@ const styles = StyleSheet.create({
     },
 });
 
-
 class RankingScreen extends React.Component {
-  componentWillMount(){
-    //ページ名を取得
-    this.props.screenProps.getPage('Ranking')
-  }
-
     render() {
         routeName = this.props.navigation.state.routeName;
         //console.log(this.props.navigation.state);

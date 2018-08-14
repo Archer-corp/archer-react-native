@@ -2,45 +2,12 @@ import React from 'react'
 import firebase from 'firebase';
 import { AppRegistry, Image, StatusBar } from "react-native";
 import {createBottomTabNavigator} from 'react-navigation'
-import { Container, Content, Header, Left, Body, Right, Button, Icon, Title, Footer, List, ListItem, Text } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import RankingStuckNavigator from '../RankingScreen/index'
 import MyPageStuckNavigator from '../MyPageScreen/index'
 import SearchStuckNavigator from '../SearchScreen/index'
 import HomeStuckNavigator from '../HomeScreen/index'
 
-
-/*const RootStackNavigator = createStackNavigator(
-  {
-  RootTab: {
-    screen: RootBottomTabNavigator,
-    navigationOptions: ({navigation,screenProps}) => ({
-      //ヘッダー描写
-      header: (
-        <Header>
-          <Left>
-            <Button
-              transparent
-              onPress={()=>navigation.openDrawer()}
-            >
-              <Icon name='menu' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>{screenProps.Page}</Title>
-          </Body>
-          <Right>
-            <Button
-              transparent
-              onPress={() => navigation.navigate('Search')}
-            >
-              <Icon name='search' />
-            </Button>
-          </Right>
-        </Header>
-      )})}
-  }
-);*/
 
 const RootBottomTabNavigator = createBottomTabNavigator (
     {
@@ -58,6 +25,7 @@ const RootBottomTabNavigator = createBottomTabNavigator (
         },
     },
     {
+        //詳細設定（詳しくは井上さんへ）
         //initialRouteName: 'Home',
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused, tintColor }) => {

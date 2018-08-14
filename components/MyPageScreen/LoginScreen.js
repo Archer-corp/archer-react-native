@@ -30,7 +30,7 @@ class LoginScreen extends React.Component {
     console.log('Signin');
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(function () {
-        console.log('success');
+        console.log('サインイン成功');
       }).catch(function(error) {
         console.error('Error(' + error.code + '): ' + error.message);
     });

@@ -14,11 +14,9 @@ const styles = StyleSheet.create({
 
 class SignupScreen extends React.Component {
 
-    //TODO
     state = {
         email: '',
         password: '',
-        confirmPassword: '',
     };
 
     //サインアップ
@@ -26,7 +24,7 @@ class SignupScreen extends React.Component {
         console.log("SIGN UP!");
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then(function () {
-                console.log("サインイン成功");
+                console.log("サインアップ成功");
             }).catch(function (error) {
                 console.error('Error(' + error.code + '): ' + error.message);
             });
