@@ -1,14 +1,16 @@
 import React from 'react'
-import firebase from 'firebase'
-import {createDrawerNavigator, createStackNavigator} from 'react-navigation'
-import { Container, Content, Thumbnail, List, ListItem, Text, Header, Left, Button, Icon, Body, Right, Title, Item, Input, Form} from 'native-base'
-import HomeScreen from '../HomeScreen/HomeScreen'
-import RankingScreen from '../RankingScreen/RankingScreen'
-import MyPageScreen from '../MyPageScreen/MyPageScreen'
-import RootBottomTabNavigator from '../HomeScreen/index'
-import SearchScreen from '../SearchScreen/SearchScreen'
+import firebase from 'firebase';
+import { AppRegistry, Image, StatusBar } from "react-native";
+import {createBottomTabNavigator} from 'react-navigation'
+import { Container, Content, Header, Left, Body, Right, Button, Icon, Title, Footer, List, ListItem, Text } from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import RankingStuckNavigator from '../RankingScreen/index'
+import MyPageStuckNavigator from '../MyPageScreen/index'
+import SearchStuckNavigator from '../SearchScreen/index'
+import HomeStuckNavigator from '../HomeScreen/index'
 
-const RootStackNavigator = createStackNavigator(
+
+/*const RootStackNavigator = createStackNavigator(
   {
   RootTab: {
     screen: RootBottomTabNavigator,
@@ -38,49 +40,50 @@ const RootStackNavigator = createStackNavigator(
         </Header>
       )})}
   }
+);*/
+
+const RootBottomTabNavigator = createBottomTabNavigator (
+    {
+        Home: {
+            screen:HomeStuckNavigator,
+        },
+        Search: {
+            screen:SearchStuckNavigator
+        },
+        Ranking: {
+            screen:RankingStuckNavigator,
+        },
+        MyPage: {
+            screen: MyPageStuckNavigator,
+        },
+    },
+    {
+        //initialRouteName: 'Home',
+        navigationOptions: ({ navigation }) => ({
+            tabBarIcon: ({ focused, tintColor }) => {
+                const { routeName } = navigation.state;
+                let iconName;
+                if (routeName === 'Home') {
+                    iconName = `ios-home${focused ? '' : '-outline'}`;
+                } else if (routeName === 'MyPage') {
+                    iconName = `ios-person${focused ? '' : '-outline'}`;
+                } else if (routeName === 'Ranking') {
+                    iconName = `ios-star${focused ? '' : '-outline'}`;
+                } else if (routeName === 'Search') {
+                    iconName = `ios-search${focused ? '' : '-outline'}`;
+                }
+
+                // You can return any component that you like here! We usually use an
+                // icon component from react-native-vector-icons
+                return <Ionicons name={iconName} size={25} color={tintColor} />;
+            },
+        }),
+        tabBarOptions: {
+            activeTintColor: 'tomato',
+            inactiveTintColor: 'gray',
+        },
+    }
 );
 
-const AppDrawer = createDrawerNavigator(
-  {
-    Root: {screen:RootStackNavigator},
-    Home: {screen: HomeScreen},
-    Ranking: {screen: RankingScreen},
-    MyPage: {screen: MyPageScreen},
-  },
-  {
-    contentComponent: (props) => <SideBar {...props}/>
-  }
-);
 
-//const routes = ["Home", "Chat", "Profile"];
-const routes = ['Home','Ranking','MyPage'];
-class SideBar extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
-  render() {
-    const { navigation, screenProps } = this.props;
-    return (
-      <Container>
-        <Content>
-          <Thumbnail large source={{uri: screenProps.userData.uri}} />
-          <Text>{screenProps.userData.name}</Text>
-          <List
-            dataArray={routes}
-            renderRow={data => {
-              return (
-                <ListItem
-                  button
-                  onPress={() => navigation.navigate(data)}>
-                  <Text>{data}</Text>
-                </ListItem>
-              );
-            }}
-          />
-        </Content>
-      </Container>
-    );
-  }
-}
-export default AppDrawer;
+export default (RootBottomTabNavigator);

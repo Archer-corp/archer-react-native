@@ -19,13 +19,20 @@ class HomeScreen extends React.Component {
     super(props);
   }
 
-  componentWillMount(){
-    //ページ名を取得
-    this.props.screenProps.getPage('Home')
+getCurrentRouteName(navigationState) {
+  if (!navigationState) {
+    return null;
   }
+  const route = navigationState.routes[navigationState.index];
+  // dive into nested navigators
+  if (route.routes) {
+    return getCurrentRouteName(route);
+  }
+  return route.routeName;
+};
 
   render() {
-    console.log(this.props.screenProps)
+    console.log();
       return (
         <Container>
           <StatusBar hidden={true} />

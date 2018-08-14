@@ -30,13 +30,6 @@ class SearchScreen extends React.Component {
     render() {
         return (
             <Container>
-                <Header searchBar rounded>
-                  <Item>
-                      <Icon name="ios-search" />
-                      <Input placeholder="search" />
-                  </Item>
-                </Header>
-
 
                 <Body>
 
