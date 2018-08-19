@@ -30,7 +30,7 @@ class App extends React.Component {
 
   async componentWillMount() {
     //NativeBaseの初期化処理
-    await Expo.Font.loadAsync({
+      await Expo.Font.loadAsync({//fontロード
         'Roboto': require('native-base/Fonts/Roboto.ttf'),
         'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
     });
@@ -60,7 +60,15 @@ class App extends React.Component {
           userData.name = user.displayName;
           userData.photouri = user.photoURL;
           this.setState({userData});
-          console.log("logged in");
+          console.log("logged in (" + userData.name);
+          if (firebase.auth().currentUser.emailVerified) {//メール認証済み
+              console.log("メール認証済み");
+          } else {//メール認証されていない
+              console.log("メール認証されていない");
+              Alert.alert("メール認証をしてください。");
+              firebase.auth().currentUser.sendEmailVerification();
+          }
+
       } else {
           this.setState({ loggedIn: false });
           let userData = Object.assign({}, this.state.userData);
