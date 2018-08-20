@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
-import { Button, StyleSheet, Text, TextInput, Alert,  View } from 'react-native'
+import { StyleSheet,Alert,  View } from 'react-native'
+import { Container, Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content, Text ,Item} from 'native-base'
 
 const styles = StyleSheet.create({
     container: {
@@ -30,32 +31,45 @@ class LoginScreen extends React.Component {
     console.log('Signin');
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(function () {
-        console.log('サインイン成功');
+          console.log('サインイン成功');
+          this.props.navigation.navigate('MyPage')
       }).catch(function(error) {
-        console.error('Error(' + error.code + '): ' + error.message);
+          console.error('Error(' + error.code + '): ' + error.message);
+
     });
-    this.props.navigation.navigate('MyPage')
+    
   }
 
   render() {
     return (
-      <View>
-        <TextInput
-          placeholder="user@gmail.com"
-          Value={this.state.email}
-          onChangeText={email => this.setState({ email })}
-        />
-        <TextInput
-            placeholder="password"
-            Value={this.state.email}
-            onChangeText={password => this.setState({ password })}
-          />
-          <Button
-            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-            title="ログイン！"
-            onPress={this.onClickedSignin.bind(this)}
-          />
-      </View>
+        <Container>
+            <Content>
+                <Form>
+                    <Item>
+                        <Input
+                            placeholder="email"
+                            Value={this.state.email}
+                            onChangeText={email => this.setState({ email })}
+                        />
+                    </Item>
+                    <Item last>
+                        <Input
+                            placeholder="password"
+                            Value={this.state.password}
+                            onChangeText={password => this.setState({ password })}
+                        />
+                    </Item>
+                </Form>
+
+                <Body>
+                    <Text>{"\n"}</Text>
+                <Button onPress={this.onClickedSignin.bind(this)}>
+                    <Text>ログイン</Text>
+                </Button>
+                </Body>
+
+            </Content>
+      </Container>
     );
   }
 }

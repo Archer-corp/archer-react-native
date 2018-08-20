@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import { StyleSheet, Text, TextInput, View, Alert} from 'react-native'
-import { Container, Header, Left, Button, Icon, Body, Right, Title ,Form,Input,Content} from 'native-base'
+import { Container, Header, Left, Button, Icon, Body, Right, Title ,Form,Input,Content,Item} from 'native-base'
 
 const styles = StyleSheet.create({
     container: {
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
 class SignupScreen extends React.Component {
 
     state = {
+        username:'',
         email: '',
         password: '',
     };
@@ -37,25 +38,34 @@ class SignupScreen extends React.Component {
     render() {
         return (
             <Container>
-                <Text>登録ページ</Text>
+                
                 <Content>
+
                     <Form>
-                     <Input
-                          placeholder="email"
-                         Value={this.state.email}
-                        onChangeText={email => this.setState({ email })}
-                        />
+                     <Item>
                         <Input
-                            placeholder="password"
-                            Value={this.state.password}
-                            onChangeText={password => this.setState({ password })}
-                        />
+                          placeholder="email"
+                          Value={this.state.email}
+                          onChangeText={email => this.setState({ email })}
+                            />
+                        </Item>
+                     <Item last>
+                     <Input
+                          placeholder="password"
+                          Value={this.state.password}
+                          onChangeText={password => this.setState({ password })}
+                            />
+                     </Item>
                     </Form>
-               
-                <Button onPress={this.onClickedSignup.bind(this)} >
-                    <Text>アカウントを作成</Text>
+
+               <Body>
+                        <Text>{"\n"}</Text>
+                    <Button onPress={this.onClickedSignup.bind(this)}>
+                        <Text>アカウント登録</Text>
                     </Button>
+               </Body>
                 </Content>
+              
             </Container>
         );
     }

@@ -23,14 +23,9 @@ class HomeScreen extends React.Component {
         <Container>
           <StatusBar hidden={true} />
           <Body>
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>ホーム</Text>
-            <Button
-              onPress={()=>this.props.navigation.navigate('MyPage')}
-            >
-              <Text>マイページへ</Text>
-            </Button>
-          </View>
+            <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>ホーム</Text>
+            </Container>
           </Body>
         </Container>
       );

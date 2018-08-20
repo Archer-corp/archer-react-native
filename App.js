@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from 'firebase';
 import {StyleSheet, Text, View, Alert } from 'react-native'
 import AppDrawer from './components/Root/Drawer'
+import { Container, Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content } from 'native-base'
 
 const styles = StyleSheet.create({
   container: {
@@ -87,10 +88,10 @@ class App extends React.Component {
     }
     console.log('renderApp')
     //screenPropsでreact-navigtionのコンポーネントにAppコンポーネントのstateを渡す
-    return (
-      <AppDrawer
-        screenProps = {this.state}
-      />
+      return (
+      <Container>
+        <AppDrawer screenProps = {this.state}/>
+      </Container>
     );
   }
 }
