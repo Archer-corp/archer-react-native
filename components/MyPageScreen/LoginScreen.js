@@ -24,20 +24,26 @@ const styles = StyleSheet.create({
 
 class LoginScreen extends React.Component {
 
-  state={ email: '', password: '' }
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: '',
+        };
+    }
 
-  //サインイン
-  onClickedSignin(){
-    console.log('Signin');
-    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(function () {
-          console.log('サインイン成功');
-          this.props.navigation.navigate('MyPage')
-      }).catch(function(error) {
-          console.error('Error(' + error.code + '): ' + error.message);
+    //ログイン
+    onClickedSignin(){
+      console.log('Signin');
+      firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+       .then(function () {//ログイン成功
+           console.log('ログイン成功');
+       }).catch(function(error) {//ログイン失敗
+           console.warn(error.message);
+           Alert.alert(error.message);
+        });
 
-    });
-    
+        if (firebase.auth().currentUser) this.props.navigation.navigate('Home');
   }
 
   render() {
@@ -57,6 +63,7 @@ class LoginScreen extends React.Component {
                             placeholder="password"
                             Value={this.state.password}
                             onChangeText={password => this.setState({ password })}
+                            secureTextEntry={true}
                         />
                     </Item>
                 </Form>

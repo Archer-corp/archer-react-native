@@ -27,11 +27,13 @@ class MyPageScreen extends React.Component {
     if (this.props.screenProps.loggedIn) {//ログイン中
         return (
             <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>{user.displayname}としてログインしています。</Text>
+                <Text>「{user.displayName}」としてログインしています。</Text>
                 <Text>{"\n"}</Text>
+                <Body>
                 <Button onPress={this.onClickedSignout.bind(this)}>
                     <Text>LOG OUT</Text>
-                </Button>
+                    </Button>
+                </Body>
             </Container>
       );
     } else {//ログインしていない

@@ -14,18 +14,18 @@ const styles = StyleSheet.create({
 });
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      //NativeBaseに使ってるらしい
-      loading: true,
-      //Firebaseのログイン状態のデータ
-      loggedIn: null,
-      //ログイン時のユーザーデータ保持
-      userData: {
-        name: '',
-        photouri: 'https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif'
-      }
+    constructor(props) {
+        super(props);
+        this.state = {
+            //NativeBaseに使ってるらしい
+            loading: true,
+            //Firebaseのログイン状態のデータ
+            loggedIn: null,
+            //ログイン時のユーザーデータ保持
+            userData: {
+                name: '',
+                photouri: 'https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif'
+        }
     };
   }
 
@@ -39,12 +39,12 @@ class App extends React.Component {
 
     //Firebaseの初期化処理
     await firebase.initializeApp({
-      apiKey: "AIzaSyBTpZFQpi2F3bUCWTg-eBM3sSsp_q_ACZY",
-      authDomain: "user-5ee06.firebaseapp.com",
-      databaseURL: "https://user-5ee06.firebaseio.com",
-      projectId: "user-5ee06",
-      storageBucket: "user-5ee06.appspot.com",
-      messagingSenderId: "135933983009"
+        apiKey: "AIzaSyBK8ri7rFLGHWz10l9BH6xYG82PjweYECk",
+        authDomain: "archer-corp.firebaseapp.com",
+        databaseURL: "https://archer-corp.firebaseio.com",
+        projectId: "archer-corp",
+        storageBucket: "archer-corp.appspot.com",
+        messagingSenderId: "208210760399"
     });
 
     //Firebaseのログイン状態を確認しstate.userDataの更新
@@ -62,6 +62,7 @@ class App extends React.Component {
           userData.photouri = user.photoURL;
           this.setState({userData});
           console.log("logged in (" + userData.name);
+
           if (firebase.auth().currentUser.emailVerified) {//メール認証済み
               console.log("メール認証済み");
           } else {//メール認証されていない
