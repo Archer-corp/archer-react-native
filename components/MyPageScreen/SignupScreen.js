@@ -40,6 +40,7 @@ class SignupScreen extends React.Component {
             //this.setState({confirmPassword:''}); 
         }
 
+        var navigation = this.props.navigation
         var username = this.state.username;
 
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -55,15 +56,14 @@ class SignupScreen extends React.Component {
                 }).catch(function (error) {//プロフィール更新失敗
                     console.warn('ユーザープロフィール更新失敗(' + username);
                     Alert.alert('ユーザープロフィール更新失敗(' + username);
-                 });
+                    });
+                navigation.navigate('Home');
 
             }).catch(function (error) {//登録失敗
                 console.warn('Error(' + error.code + '): ' + error.message);
                 Alert.alert(error.message);
                 return;
             });
-
-        if (firebase.auth().ccrrentUser) this.props.navigation.navigate('Home');
     }
 
     render() {

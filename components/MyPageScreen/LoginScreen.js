@@ -34,16 +34,16 @@ class LoginScreen extends React.Component {
 
     //ログイン
     onClickedSignin(){
-      console.log('Signin');
+        console.log('Signin');
+        var navigation = this.props.navigation
       firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
        .then(function () {//ログイン成功
            console.log('ログイン成功');
+           navigation.navigate('Home');
        }).catch(function(error) {//ログイン失敗
            console.warn(error.message);
            Alert.alert(error.message);
         });
-
-        if (firebase.auth().currentUser) this.props.navigation.navigate('Home');
   }
 
   render() {
