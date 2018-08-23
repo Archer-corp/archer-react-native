@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import { StyleSheet,Alert,  View } from 'react-native'
-import { Container, Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content, Text ,Item} from 'native-base'
+import { Container, Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content, Text, Item, Toast } from 'native-base'
 
 const styles = StyleSheet.create({
     container: {

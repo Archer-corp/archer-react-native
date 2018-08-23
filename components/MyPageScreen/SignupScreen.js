@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import { StyleSheet, Text, TextInput, View, Alert} from 'react-native'
-import { Container, Header, Left, Button, Icon, Body, Right, Title ,Form,Input,Content,Item} from 'native-base'
+import { Container, Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content, Item, Toast } from 'native-base'
 
 const styles = StyleSheet.create({
     container: {
@@ -20,7 +20,8 @@ class SignupScreen extends React.Component {
             username:'',
             email: '',
             password: '',
-            confirmPassword:'',
+            confirmPassword: '',
+            showToast: false
         };
     }
    
@@ -30,14 +31,16 @@ class SignupScreen extends React.Component {
         console.log("アカウント登録ボタン");
 
         if (this.state.username == '') {
-            Alert.alert('ユーザー名を入力してください。');
+            Toast.show({ text: " ユーザー名を入力してください", buttonText: "OK", type: "warning" });
+            //Alert.alert('ユーザー名を入力してください。');
             return;
         }
 
         if (this.state.password != this.state.confirmPassword) {
-            Alert.alert('パスワードの確認と食い違っています、もう一度お確かめください。');
+            Toast.show({ text: ' パスワードの確認と食い違っています', buttonText: 'OK', type: 'danger' });
+            //Alert.alert('パスワードの確認と食い違っています、もう一度お確かめください。');
             return;
-            //this.setState({confirmPassword:''}); 
+            this.setState({confirmPassword:''}); 
         }
 
         var navigation = this.props.navigation
@@ -61,7 +64,8 @@ class SignupScreen extends React.Component {
 
             }).catch(function (error) {//登録失敗
                 console.warn('Error(' + error.code + '): ' + error.message);
-                Alert.alert(error.message);
+                Toast.show({ text:error.message, buttonText: "OK", type: "danger" });
+                //Alert.alert(error.message);
                 return;
             });
     }
