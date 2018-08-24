@@ -27,27 +27,16 @@ class SearchScreen extends React.Component {
         super(props);
         this.state = {
             title: '',
-           // isChk:[],
+            isChk:[],
         };
-
-        /*
-        console.log("a1");
-        //this.state.isChk = new Array[checkBoxIndex.max];
-        var isChkInit =[];
-        for (var i = 0; i < checkBoxIndex.max; i++) {
-            isChkInit[i] = true;
-        }
-        console.log("a2");
-        this.setState({ isChk: isChkInit });
-        console.log("a3");
-        */
     }
 
     
-    check(index) {//渡された番号のチェックボックスのオンオフ
+    check = (index) => {//渡された番号のチェックボックスのオンオフ
+        if (index >= checkBoxIndex.max) return;
         var isChkCopy = this.state.isChk.slice();
         isChkCopy[index] = !isChkCopy[index];
-        console.log("check:"+index+"→"+!isChkCopy[index]);
+        //console.log("switchCheckBox No."+index+"→"+!isChkCopy[index]);
         this.setState({isChk:isChkCopy});
     }
 
@@ -55,54 +44,52 @@ class SearchScreen extends React.Component {
         return (
             <Container>
                 <Content>
-                    <Card>
+
+                    <Card>{/*ジャンル指定カード*/}
                         <CardItem header>
                             <Text>ジャンル</Text>
                         </CardItem>
                         <CardItem>
                             <Content>
-                                <ListItem>
-                                    <CheckBox />
-                                <Body>
-                                    <Text>J-pop</Text>
-                                </Body>
+                                <ListItem onPress={() => this.check(checkBoxIndex.jpop)}>
+                                    <CheckBox  checked={this.state.isChk[checkBoxIndex.jpop]} />
+                                    <Body>
+                                        <Text>　J-pop</Text>
+                                    </Body>
                                 </ListItem>
-                            <ListItem>
-                                <CheckBox/>
-                                <Body>
-                                    <Text>Discussion with Client</Text>
-                                </Body>
-                            </ListItem>
-                            <ListItem>
-                                <CheckBox/>
-                                <Body>
-                                    <Text>Finish list Screen</Text>
-                                </Body>
+
+                                <ListItem onPress={() => this.check(checkBoxIndex.jazz)}>
+                                    <CheckBox checked={this.state.isChk[checkBoxIndex.jazz]}/>
+                                    <Body>
+                                        <Text>　jazz</Text>
+                                    </Body>
+                                </ListItem >
+
+                                <ListItem onPress={() => this.check(checkBoxIndex.rock)}>
+                                    <CheckBox checked={this.state.isChk[checkBoxIndex.rock]}/>
+                                    <Body>
+                                        <Text>　rock</Text>
+                                    </Body>
+                                </ListItem>
+                                <ListItem onPress={() => this.check(checkBoxIndex.rock)}>
+                                    <CheckBox checked={this.state.isChk[checkBoxIndex.rock]} />
+                                    <Body>
+                                        <Text>　rock</Text>
+                                    </Body>
+                                </ListItem>
+                                <ListItem onPress={() => this.check(checkBoxIndex.rock)}>
+                                    <CheckBox checked={this.state.isChk[checkBoxIndex.rock]} />
+                                    <Body>
+                                        <Text>　rock</Text>
+                                    </Body>
                                 </ListItem>
                                 </Content>
                         </CardItem>
-                        <CardItem>
-                            <Body>
-                                <Text>
-                                //Your text here
-                                </Text>
-                                <Text>
-                                //Your text here
-                                </Text>
-                                <Text>
-                                //Your text here
-                                </Text>
-                                <Text>
-                                //Your text here
-                                </Text>
-                            </Body>
-                        </CardItem>
                     </Card>
+
                 </Content>
+
                 <Body>
-
-
-
                 </Body>
 
             </Container>
