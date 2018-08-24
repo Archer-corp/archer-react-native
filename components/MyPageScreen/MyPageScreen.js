@@ -40,14 +40,14 @@ class MyPageScreen extends React.Component {
         return (
             <Container >
                 <Body>
-                    <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center',width:'70%' }}>
-                        <Text>ログインまたはアカウントを作成すると様々な機能をご利用いただけます</Text>
-                        <Text>{"\n"}</Text>
-                        <Button onPress={() => this.props.navigation.push('Login')} style={{ alignItems: 'center', justifyContent: 'center'}}>
-                            <Text>   進む   </Text>
-                        </Button>
-                    </Container>
+                    <Text>ログインまたはアカウントを作成すると様々な機能をご利用いただけます</Text>
+                    <Text>{"\n"}</Text>
                 </Body>
+                <Body>
+                    <Button onPress={() => this.props.navigation.push('Login')} style={{ width: '90%' }}>
+                    <Text style={{}}>   進む   </Text>
+                    </Button>
+                </Body>              
             </Container>
       );
     }

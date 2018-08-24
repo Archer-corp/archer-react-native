@@ -22,11 +22,7 @@ class HomeScreen extends React.Component {
       return (
         <Container>
           <StatusBar hidden={true} />
-          <Body>
-            <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>ホーム</Text>
-            </Container>
-          </Body>
+    
         </Container>
       );
   }
