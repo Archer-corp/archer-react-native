@@ -74,7 +74,7 @@ class SignupScreen extends React.Component {
         return (
             <Container>
                 
-                <Content>
+                <Content style={{ justifyContent: 'center' }}>
 
                     <Form>
                         <Item>

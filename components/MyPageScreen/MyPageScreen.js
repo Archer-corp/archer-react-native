@@ -38,16 +38,19 @@ class MyPageScreen extends React.Component {
       );
     } else {//ログインしていない
         return (
-            <Container >
-                <Body>
-                    <Text>ログインまたはアカウントを作成すると様々な機能をご利用いただけます</Text>
+            <Container>
+                <Content style={{justifyContent: 'center', alignItems: 'center',}}>
+                    <Text adjustsFontSizeToFit={true}
+                        numberOfLines={2}
+                        style={{ textAlignVertical: "center", textAlign: "center"}}>ログインまたはアカウントを作成すると様々な機能をご利用いただけます</Text>
                     <Text>{"\n"}</Text>
-                </Body>
-                <Body>
-                    <Button onPress={() => this.props.navigation.push('Login')} style={{ width: '90%' }}>
-                    <Text style={{}}>   進む   </Text>
-                    </Button>
-                </Body>              
+
+                    <Body>
+                        <Button onPress={() => this.props.navigation.push('Login')}>
+                            <Text>   進む   </Text>
+                        </Button>
+                    </Body>
+                </Content>             
             </Container>
       );
     }
