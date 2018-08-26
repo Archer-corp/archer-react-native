@@ -50,7 +50,6 @@ class RankingScreen extends Component {
                 return 0;
             });
             return artistArray[index].map((e, i) => {
-                //return e.name + "\n" + e.artist + "\n" + e.point + "ポイント"; //ポイントであってるのかわからないので確認お願いします。
                 return (
                     <ListItem thumbnail style={{ padding: 0, margin: 0 }}>
                         <Left>
@@ -58,7 +57,6 @@ class RankingScreen extends Component {
                         </Left>
                         <Body>
                             <Text style={{ padding: 0, margin: 0 }}> {(i + 1) + "位   " + e.name + "\n" + e.point + "like"}</Text>
-                            {/*<Text style={{ padding: 0, margin: 0 }}>{data}</Text>*/}
                         </Body>
                         <Right>
                             <Button bordered >
