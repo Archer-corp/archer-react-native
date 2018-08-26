@@ -49,7 +49,7 @@ class LoginScreen extends React.Component {
   render() {
     return (
         <Container>
-            <Content>
+            <Content style={{ justifyContent: 'center'}}>
                 <Form>
                     <Item>
                         <Input

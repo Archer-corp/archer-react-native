@@ -31,14 +31,14 @@ class SignupScreen extends React.Component {
         console.log("アカウント登録ボタン");
 
         if (this.state.username == '') {
-            Toast.show({ text: " ユーザー名を入力してください", buttonText: "OK", type: "warning" });
-            //Alert.alert('ユーザー名を入力してください。');
+            //Toast.show({ text: " ユーザー名を入力してください", buttonText: "OK", type: "warning" });
+            Alert.alert('ユーザー名を入力してください。');
             return;
         }
 
         if (this.state.password != this.state.confirmPassword) {
-            Toast.show({ text: ' パスワードの確認と食い違っています', buttonText: 'OK', type: 'danger' });
-            //Alert.alert('パスワードの確認と食い違っています、もう一度お確かめください。');
+            //Toast.show({ text: ' パスワードの確認と食い違っています', buttonText: 'OK', type: 'danger' });
+            Alert.alert('パスワードが一致しません、もう一度お確かめください 。');
             return;
             this.setState({confirmPassword:''}); 
         }
@@ -50,7 +50,7 @@ class SignupScreen extends React.Component {
             .then(function () {//登録成功
                 console.log("サインアップ成功,確認メール送信");
                 firebase.auth().currentUser.sendEmailVerification()//アカウント確認メール送信
-
+                alert("確認メールを送信しました。");
                 firebase.auth().currentUser.updateProfile({//ユーザー名を反映
                     displayName:username,
                     //photoURL: "https://example.com/jane-q-user/profile.jpg" //TODO photo(user icon)
@@ -64,8 +64,8 @@ class SignupScreen extends React.Component {
 
             }).catch(function (error) {//登録失敗
                 console.warn('Error(' + error.code + '): ' + error.message);
-                Toast.show({ text:error.message, buttonText: "OK", type: "danger" });
-                //Alert.alert(error.message);
+                //Toast.show({ text:error.message, buttonText: "OK", type: "danger" });
+                Alert.alert(error.message);
                 return;
             });
     }
@@ -74,7 +74,7 @@ class SignupScreen extends React.Component {
         return (
             <Container>
                 
-                <Content>
+                <Content style={{ justifyContent: 'center' }}>
 
                     <Form>
                         <Item>
