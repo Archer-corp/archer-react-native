@@ -70,7 +70,7 @@ class LoginScreen extends React.Component {
 
                 <Body>
                     <Text>{"\n"}</Text>
-                <Button onPress={this.onClickedSignin.bind(this)}>
+                    <Button onPress={this.onClickedSignin.bind(this)} bordered>
                     <Text>ログイン</Text>
                 </Button>
                 </Body>

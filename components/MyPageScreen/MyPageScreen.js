@@ -1,8 +1,8 @@
 import React from 'react';
 import firebase from 'firebase';
 import LoginScreen from './LoginScreen';
-import { StyleSheet, Text, View, Alert } from 'react-native'
-import { Container, Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content } from 'native-base'
+import { StyleSheet, Alert } from 'react-native'
+import { Container,Text,Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content } from 'native-base'
 //import {} from 'react-navigation';
 
 
@@ -46,7 +46,7 @@ class MyPageScreen extends React.Component {
                     <Text>{"\n"}</Text>
 
                     <Body>
-                        <Button onPress={() => this.props.navigation.push('Login')}>
+                        <Button onPress={() => this.props.navigation.push('Login')} bordered>
                             <Text>   進む   </Text>
                         </Button>
                     </Body>
