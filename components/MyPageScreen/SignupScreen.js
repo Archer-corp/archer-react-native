@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
-import { StyleSheet, Text, TextInput, View, Alert} from 'react-native'
-import { Container, Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content, Item, Toast } from 'native-base'
+import { StyleSheet,Alert} from 'react-native'
+import { Container,Text,Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content, Item, Toast } from 'native-base'
 
 const styles = StyleSheet.create({
     container: {
@@ -113,7 +113,7 @@ class SignupScreen extends React.Component {
 
                <Body>
                         <Text>{"\n"}</Text>
-                    <Button onPress={this.onClickedSignup.bind(this)}>
+                    <Button onPress={this.onClickedSignup.bind(this)} bordered>
                         <Text>アカウント登録</Text>
                     </Button>
                </Body>
