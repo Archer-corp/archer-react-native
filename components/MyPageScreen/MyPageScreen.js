@@ -1,8 +1,8 @@
 import React from 'react';
 import firebase from 'firebase';
 import LoginScreen from './LoginScreen';
-import { StyleSheet, Text, View, Alert } from 'react-native'
-import { Container, Header, Left, Button, Icon, Body, Right, Title} from 'native-base'
+import { StyleSheet, Alert } from 'react-native'
+import { Container,Text,Header, Left, Button, Icon, Body, Right, Title, Form, Input, Content } from 'native-base'
 //import {} from 'react-navigation';
 
 
@@ -17,26 +17,41 @@ const styles = StyleSheet.create({
 
 class MyPageScreen extends React.Component {
   constructor(props){
-    super(props);
+      super(props);
+      
   }
 
   //ログイン状態に応じてボタンの切り替え
-  displayForm(){
-    if (this.props.screenProps.loggedIn) {
-      return (
-        <Button
-          onPress={this.onClickedSignout.bind(this)}
-        >
-          <Text>LOGOUT</Text>
-        </Button>
+    displayForm() {
+        var user = firebase.auth().currentUser; 
+    if (this.props.screenProps.loggedIn) {//ログイン中
+        return (
+            <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>「{user.displayName}」としてログインしています。</Text>
+                <Text>{"\n"}</Text>
+                <Body>
+                <Button onPress={this.onClickedSignout.bind(this)}>
+                    <Text>LOG OUT</Text>
+                    </Button>
+                </Body>
+            </Container>
       );
-    } else {
-      return (
-        <Button
-          onPress={() => this.props.navigation.navigate('Login')}
-        >
-          <Text>Log in or Sign up</Text>
-        </Button>
+    } else {//ログインしていない
+        return (
+            <Container>
+                <Content style={{justifyContent: 'center', alignItems: 'center',}}>
+                    <Text adjustsFontSizeToFit={true}
+                        numberOfLines={2}
+                        style={{ textAlignVertical: "center", textAlign: "center"}}>ログインまたはアカウントを作成すると様々な機能をご利用いただけます</Text>
+                    <Text>{"\n"}</Text>
+
+                    <Body>
+                        <Button onPress={() => this.props.navigation.push('Login')} bordered>
+                            <Text>   進む   </Text>
+                        </Button>
+                    </Body>
+                </Content>             
+            </Container>
       );
     }
   }
@@ -55,20 +70,9 @@ class MyPageScreen extends React.Component {
   render() {
     console.log('renderMyPage');
     return (
-      <Container>
-        <Body>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>{this.props.screenProps.userData.name}のページ</Text>
-            <Button
-              onPress={() => this.props.navigation.navigate('Home')}
-            >
-              <Text>ホームへ</Text>
-            </Button>
-            <Text>{"\n"}</Text>
+        <Container>
             {this.displayForm()}
-          </View>
-        </Body>
-      </Container>
+        </Container>
     );
   }
 }

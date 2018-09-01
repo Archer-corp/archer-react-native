@@ -7,12 +7,16 @@ import RankingStuckNavigator from '../RankingScreen/index'
 import MyPageStuckNavigator from '../MyPageScreen/index'
 import SearchStuckNavigator from '../SearchScreen/index'
 import HomeStuckNavigator from '../HomeScreen/index'
+import TopicStuckNavigator from '../TopicScreen/index'
 
 
 const RootBottomTabNavigator = createBottomTabNavigator (
     {
         Home: {
             screen:HomeStuckNavigator,
+        },
+        Topic: {
+            screen:TopicStuckNavigator
         },
         Search: {
             screen:SearchStuckNavigator
@@ -25,14 +29,15 @@ const RootBottomTabNavigator = createBottomTabNavigator (
         },
     },
     {
-        //詳細設定（詳しくは井上さんへ）
         //initialRouteName: 'Home',
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused, tintColor }) => {
                 const { routeName } = navigation.state;
                 let iconName;
                 if (routeName === 'Home') {
-                    iconName = `ios-home${focused ? '' : '-outline'}`;
+                    iconName = `ios-home${focused ? '' : '-outline'}`;//今開いているページのアイコンなら強調
+                } else if (routeName === 'Topic') {
+                    iconName = `ios-megaphone${focused ? '' : '-outline'}`;
                 } else if (routeName === 'MyPage') {
                     iconName = `ios-person${focused ? '' : '-outline'}`;
                 } else if (routeName === 'Ranking') {

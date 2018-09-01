@@ -6,13 +6,16 @@ import HomeScreen from '../HomeScreen/HomeScreen'
 import RankingScreen from '../RankingScreen/RankingScreen'
 import MyPageScreen from '../MyPageScreen/MyPageScreen'
 import SearchScreen from '../SearchScreen/SearchScreen'
+import TopicScreen from '../TopicScreen/TopicScreen'
 import RootBottomTabNavigator from '../Root/index'
 
 //ドロワーからrootに飛ぶ、ドロワーに表示するrouteは書いておく
 const AppDrawer = createDrawerNavigator(
   {
     Root: {screen:RootBottomTabNavigator},
-    Home: {screen: HomeScreen},
+    Home: { screen: HomeScreen },
+    Topic: {screen:TopicScreen},
+    Search: {screen:SearchScreen},
     Ranking: {screen: RankingScreen},
     MyPage: {screen: MyPageScreen},
   },
@@ -23,7 +26,7 @@ const AppDrawer = createDrawerNavigator(
 );
 
 //Thumbnailはプロフィール画像、Textでユーザーネーム、listで画面遷移
-const routes = ['Home','Ranking','MyPage'];
+const routes = ['Home','Topic','Search','Ranking','MyPage'];
 class SideBar extends React.Component {
   constructor(props){
     super(props);
