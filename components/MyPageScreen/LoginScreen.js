@@ -49,34 +49,35 @@ class LoginScreen extends React.Component {
   render() {
     return (
         <Container>
-            <Content style={{ justifyContent: 'center'}}>
-                <Form>
-                    <Item>
-                        <Input
-                            placeholder="email"
-                            Value={this.state.email}
-                            onChangeText={email => this.setState({ email })}
-                        />
-                    </Item>
-                    <Item last>
-                        <Input
-                            placeholder="password"
-                            Value={this.state.password}
-                            onChangeText={password => this.setState({ password })}
-                            secureTextEntry={true}
-                        />
-                    </Item>
-                </Form>
+          <Content contentContainerStyle={{flex:1, justifyContent: 'center'}}>
+            <Form>
+              <Item>
+                <Input
+                  placeholder="email"
+                  Value={this.state.email}
+                  onChangeText={email => this.setState({ email })}
+                />
+              </Item>
+              <Item last>
+                <Input
+                  placeholder="password"
+                  Value={this.state.password}
+                  onChangeText={password => this.setState({ password })}
+                  secureTextEntry={true}
+                />
+              </Item>
+            </Form>
 
-                <Body>
-                    <Text>{"\n"}</Text>
-                    <Button onPress={this.onClickedSignin.bind(this)} bordered>
-                    <Text>ログイン</Text>
-                </Button>
-                </Body>
+            <Text>{"\n"}</Text>
+            <Button
+              style={{alignSelf:'center'}}
+              onPress={this.onClickedSignin.bind(this)}
+              bordered>
+              <Text>ログイン</Text>
+            </Button>
 
-            </Content>
-      </Container>
+          </Content>
+        </Container>
     );
   }
 }

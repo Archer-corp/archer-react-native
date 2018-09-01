@@ -24,7 +24,7 @@ class SignupScreen extends React.Component {
             showToast: false
         };
     }
-   
+
 
     //サインアップ
     onClickedSignup = () => {
@@ -40,7 +40,7 @@ class SignupScreen extends React.Component {
             //Toast.show({ text: ' パスワードの確認と食い違っています', buttonText: 'OK', type: 'danger' });
             Alert.alert('パスワードが一致しません、もう一度お確かめください 。');
             return;
-            this.setState({confirmPassword:''}); 
+            this.setState({confirmPassword:''});
         }
 
         var navigation = this.props.navigation
@@ -73,52 +73,51 @@ class SignupScreen extends React.Component {
     render() {
         return (
             <Container>
-                
-                <Content style={{ justifyContent: 'center' }}>
+              <Content contentContainerStyle={{flex:1, justifyContent: 'center' }}>
+                <Form>
+                  <Item>
+                    <Input
+                      placeholder="user name"
+                      Value={this.state.username}
+                      onChangeText={username => this.setState({ username })}
+                    />
+                  </Item>
 
-                    <Form>
-                        <Item>
-                            <Input
-                                placeholder="user name"
-                                Value={this.state.username}
-                                onChangeText={username => this.setState({ username })}
-                            />
-                        </Item>
+                  <Item>
+                    <Input
+                      placeholder="email"
+                      Value={this.state.email}
+                      onChangeText={email => this.setState({ email })}
+                    />
+                  </Item>
 
-                     <Item>
-                        <Input
-                          placeholder="email"
-                          Value={this.state.email}
-                          onChangeText={email => this.setState({ email })}
-                            />
-                        </Item>
+                  <Item>
+                    <Input
+                      placeholder="password"
+                      Value={this.state.password}
+                      onChangeText={password => this.setState({ password })}
+                      secureTextEntry={true}
+                    />
+                  </Item>
+                  <Item>
+                    <Input
+                      placeholder="please confirm password"
+                      Value={this.state.confirmPassword}
+                      onChangeText={confirmPassword => this.setState({ confirmPassword })}
+                      secureTextEntry={true}
+                    />
+                  </Item>
+                </Form>
 
-                     <Item>
-                     <Input
-                          placeholder="password"
-                          Value={this.state.password}
-                          onChangeText={password => this.setState({ password })}
-                          secureTextEntry={true}
-                            />
-                     </Item>
-                     <Item>
-                        <Input
-                                placeholder="please confirm password"
-                                Value={this.state.confirmPassword}
-                                onChangeText={confirmPassword => this.setState({ confirmPassword })}
-                                secureTextEntry={true}
-                          />
-                    </Item>
-                    </Form>
-
-               <Body>
-                        <Text>{"\n"}</Text>
-                    <Button onPress={this.onClickedSignup.bind(this)} bordered>
-                        <Text>アカウント登録</Text>
-                    </Button>
-               </Body>
-                </Content>
-              
+                <Text>{"\n"}</Text>
+                <Button
+                  style={{alignSelf:'center'}}
+                  onPress={this.onClickedSignup.bind(this)}
+                  bordered
+                >
+                  <Text>アカウント登録</Text>
+                </Button>
+              </Content>
             </Container>
         );
     }
