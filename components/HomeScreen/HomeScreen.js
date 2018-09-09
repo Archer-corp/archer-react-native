@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import firebase from 'firebase';
 import { Container, Header, Left, Button, Icon, Body, Right, Title,ListItem,List    } from 'native-base'
-import SearchScreen from '../SearchScreen/SearchScreen'
+//import SearchScreen from '../SearchScreen/SearchScreen'
 
 const styles = StyleSheet.create({
     container: {
