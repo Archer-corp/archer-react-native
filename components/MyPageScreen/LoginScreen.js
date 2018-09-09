@@ -100,7 +100,8 @@ class LoginScreen extends React.Component {
               onPress={this.onClickedSignin.bind(this)}
               bordered>
               <Text>ログイン</Text>
-            </Button>
+                </Button>
+                <Text>{"\n"}</Text>
             <Button
               style={{alignSelf:'center'}}
               onPress={this.onClickedGoogleSignin.bind(this)}
