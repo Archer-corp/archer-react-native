@@ -1,7 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 import { StyleSheet,StatusBar } from 'react-native'
 import firebase from 'firebase';
-import { Container,Text, Header, Left, Button, Icon, Body, Right, Title, ListItem, List } from 'native-base'
+import { Container,Content,Text, Header, Left, Button, Icon, Body, Right, Title, ListItem, List } from 'native-base'
 
 const styles = StyleSheet.create({
     container: {
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     },
 });
 
-class HomeScreen extends React.Component {
+class TutorialScreen extends React.Component {
 
     constructor(props) {
         super(props);
@@ -30,4 +30,4 @@ class HomeScreen extends React.Component {
     }
 
 }
-export default (HomeScreen);
+export default (TutorialScreen);
