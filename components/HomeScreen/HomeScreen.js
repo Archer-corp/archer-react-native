@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native'
+import { StyleSheet,StatusBar } from 'react-native'
 import firebase from 'firebase';
-import { Container, Header, Left, Button, Icon, Body, Right, Title,ListItem,List    } from 'native-base'
-import SearchScreen from '../SearchScreen/SearchScreen'
+import { Container, Content,Text,Header, Left, Button, Icon, Body, Right, Title,ListItem,List    } from 'native-base'
+//import SearchScreen from '../SearchScreen/SearchScreen'
 
 const styles = StyleSheet.create({
     container: {
@@ -19,33 +19,26 @@ class HomeScreen extends React.Component {
         super(props);
     }
 
+    onClickedTutorial() {
+        console.log('go tutorial');
+        var navigation = this.props.navigation
+        navigation.navigate('Tutorial')
+    }
+
     render() {
 
-        var items = [
-            'Simon Mignolet',
-            'Nathaniel Clyne',
-            'Dejan Lovren',
-            'Mama Sakho',
-            'Emre Can'
-        ];
-
+        //TODO
         return (
             <Container>
-                <StatusBar hidden={true} />
-            </Container>
-        );
-
-        return (
-            <Container>
-                <StatusBar hidden={true} />
                 <Content>
-                    <List dataArray={items}
-                        renderRow={(item) =>
-                            <ListItem>
-                                <Text>{item}</Text>
-                            </ListItem>
-                        }>
-                    </List>
+                    <StatusBar hidden={true} />
+                    <Text>Go Tutorial</Text>
+                    <Button
+                        bordered
+                        onPress={this.onClickedTutorial.bind(this)}
+                    >
+                        <Text>Go Tutorial</Text>
+                    </Button>
                 </Content>
             </Container>
         );
