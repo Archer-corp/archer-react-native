@@ -1,8 +1,10 @@
-﻿import React from 'react';
-import { StyleSheet, StatusBar, Image } from 'react-native'
+﻿'use strict';
+import React from 'react';
+import { StyleSheet, StatusBar, Image } from 'react-native';
 import firebase from 'firebase';
-import { createBottomTabNavigator, BottomTabBar, StackNavigator, TabNavigator, createStackNavigator } from 'react-navigation';
-import { Container, Text, Header, Left, Button, Icon, Body, Right, Title, Input, Form, Item, Content, CheckBox, List, ListItem, Thumbnail, Card, CardItem, } from 'native-base'
+import { createBottomTabNavigator} from 'react-navigation';
+import { Container, Text, Header, Body, Input, Content } from 'native-base';
+//import QRCodeScanner from 'react-native-qrcode-scanner';
 
 class QRReadScreen extends React.Component {
     constructor(props) {

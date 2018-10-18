@@ -20,3 +20,7 @@ Firebase
 
 React-navigation
 (npm install --save react-navigation)
+
+react-native-qrcode
+
+react-nativr-qrcode-scanner
