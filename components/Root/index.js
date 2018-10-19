@@ -1,13 +1,16 @@
 import React from 'react'
 import firebase from 'firebase';
 import { AppRegistry, Image, StatusBar } from "react-native";
-import {createBottomTabNavigator} from 'react-navigation'
+import {createBottomTabNavigator,createSwitchNavigator} from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import RankingStuckNavigator from '../RankingScreen/index'
 import MyPageStuckNavigator from '../MyPageScreen/index'
 import SearchStuckNavigator from '../SearchScreen/index'
 import HomeStuckNavigator from '../HomeScreen/index'
 import TopicStuckNavigator from '../TopicScreen/index'
+import TutorialScreen from '../TutorialScreen/index';
+
+
 
 
 const RootBottomTabNavigator = createBottomTabNavigator (
@@ -58,5 +61,16 @@ const RootBottomTabNavigator = createBottomTabNavigator (
     }
 );
 
+const TutorialSwitchNavigator = createSwitchNavigator(
+    {
+        RootBottomTab: {
+            screen: RootBottomTabNavigator
+        },
+        Tutorial: {
+            screen: TutorialScreen
+        },
+    }
+)
 
-export default (RootBottomTabNavigator);
+
+export default (TutorialSwitchNavigator);

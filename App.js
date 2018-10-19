@@ -17,7 +17,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //NativeBaseに使ってるらしい
+            //NativeBaseのロード待機のため
             loading: true,
             //Firebaseのログイン状態のデータ
             loggedIn: null,
