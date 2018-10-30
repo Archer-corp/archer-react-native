@@ -4,8 +4,9 @@ cd \Users\axisv\Documents\GitHub\archer-react-native（井上）
 デバッグ開始
 npm start
 
-ライブラリは、ファイルを取り込んだ後、
-npm installで自動ですべて入る
+ファルダの場所に移動してから
+npm install
+すれば、package.jsonを参照して自動でライブラリをインストール
 
 環境構築メモ
 
@@ -22,3 +23,5 @@ React-navigation
 (npm install --save react-navigation)
 
 react-native-qrcode
+
+expo-barcode-scanner
